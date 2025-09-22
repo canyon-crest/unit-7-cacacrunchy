@@ -9,7 +9,11 @@ public class Unit7 {
     // DO NOT use the Collections class or any additional methods beyond size(), add(), get(), set(), and remove().
     public static int sumOfElements(ArrayList<Integer> list) {
         // TODO: Implement this method
-        return 0;  // Placeholder return value
+    	int sum = 0;
+    	for(int i = 0; i < list.size(); i++) {
+    		sum += list.get(i);
+    	}
+        return sum;  // Placeholder return value
     }
 
     // 2. Method that removes all instances of a specific element from the ArrayList
@@ -17,6 +21,12 @@ public class Unit7 {
     // DO NOT use removeIf(), Collections, or other methods beyond size(), add(), get(), set(), and remove().
     public static void removeAllInstances(ArrayList<Integer> list, int elementToRemove) {
         // TODO: Implement this method
+    	int r = elementToRemove;
+    	for(int i = list.size() - 1; i>=0; i--) {
+    		if(list.get(i) == r) {
+    			list.remove(i);
+    		}
+    	}
     }
 
     // 3. Method that doubles each element in the ArrayList
@@ -24,6 +34,10 @@ public class Unit7 {
     // DO NOT use Collections or other methods beyond size(), add(), get(), set(), and remove().
     public static void doubleAllElements(ArrayList<Integer> list) {
         // TODO: Implement this method
+    	for(int i = 0; i < list.size(); i++) {
+    		list.set(i, list.get(i)*2);
+    	}
+    
     }
 
     // 4. Method that adds a new element to the list only if it is not already present
@@ -31,6 +45,15 @@ public class Unit7 {
     // DO NOT use contains(), Collections, or other methods beyond size(), add(), get(), set(), and remove().
     public static void addIfNotPresent(ArrayList<Integer> list, int newElement) {
         // TODO: Implement this method
+    	boolean b = false;
+    	for(int n: list) {
+    		if(n == newElement) {
+    			b = true;
+    		}
+    	}
+    	if(!b) {
+    		list.add(newElement);
+    	}
     }
 
     // 5. Method that returns a new ArrayList containing only the even elements from the input list
@@ -38,7 +61,13 @@ public class Unit7 {
     // DO NOT use streams, Collections, or other methods beyond size(), add(), get(), set(), and remove().
     public static ArrayList<Integer> getEvenElements(ArrayList<Integer> list) {
         // TODO: Implement this method
-        return null;  // Placeholder return value
+    	ArrayList<Integer> evens = new ArrayList<>();
+    	for(int n : list) {
+    		if(n%2 == 0) {
+    			evens.add(n);
+    		}
+    	}
+        return evens;  // Placeholder return value
     }
 
     // 6. Method that removes elements divisible by 5
@@ -46,6 +75,11 @@ public class Unit7 {
     // DO NOT use removeIf(), Collections, or other methods beyond size(), add(), get(), set(), and remove().
     public static void removeElementsDivisibleBy5(ArrayList<Integer> list) {
         // TODO: Implement this method
+    	for(int i = list.size() - 1; i>=0; i--) {
+    		if(list.get(i) % 5 == 0) {
+    			list.remove(i);
+    		}
+    	}
     }
 
     // 7. Method that reverses the list without using the Collections class
@@ -53,6 +87,12 @@ public class Unit7 {
     // DO NOT use Collections or other methods beyond size(), add(), get(), set(), and remove().
     public static void reverseList(ArrayList<Integer> list) {
         // TODO: Implement this method
+    	int s = list.size();
+    	for(int i = 0; i < s / 2; i++) {
+    		int temp = list.get(i);
+    		list.set(i,  list.get(s-1-i));
+    		list.set(s-1-i,  temp);
+    	}
     }
 
     // 8. Method that shuffles the elements of the list
@@ -60,5 +100,16 @@ public class Unit7 {
     // DO NOT use the Collections.shuffle() or other methods beyond size(), add(), get(), set(), and remove().
     public static void shuffleList(ArrayList<Integer> list) {
         // TODO: Implement this method
+    	ArrayList<Integer> shuffled = new ArrayList<>();
+    	for(int n : list) {
+    		shuffled.add( (int) (Math.random() * shuffled.size()), n);
+    	}
+    	for(int i = list.size() - 1; i >= 0; i--) {
+    		list.remove(i);
+    	}
+    	for(int n : shuffled) {
+    		list.add(n);
+    	}
+    	
     }
 }
